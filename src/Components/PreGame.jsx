@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import getAnimeDataById from "./getAnimeDataById";
+import { useEffect } from "react";
+import getAnimeDataById from "../utils/getAnimeDataById";
 
 export default function PreGame({
   cardAmount,
@@ -8,9 +8,9 @@ export default function PreGame({
   setCardAmount,
   setAnimeId,
   setAnimeTitle,
+  gameStarted,
+  setGameStarted,
 }) {
-  const [gameStarted, setGameStarted] = useState(false);
-
   useEffect(() => {
     fetchAnimeTitle();
   }, []);

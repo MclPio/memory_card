@@ -1,11 +1,13 @@
 import { useState } from "react";
 import "./App.css";
-import PreGame from "./PreGame";
+import PreGame from "./Components/PreGame";
+import Game from "./Components/Game";
 
 function App() {
   const [cardAmount, setCardAmount] = useState(10);
   const [animeId, setAnimeId] = useState(21);
   const [animeTitle, setAnimeTitle] = useState(null);
+  const [gameStarted, setGameStarted] = useState(false);
 
   return (
     <>
@@ -17,6 +19,14 @@ function App() {
         setAnimeId={setAnimeId}
         animeTitle={animeTitle}
         setAnimeTitle={setAnimeTitle}
+        gameStarted={gameStarted}
+        setGameStarted={setGameStarted}
+      />
+      <Game
+        cardAmount={cardAmount}
+        animeId={animeId}
+        gameStarted={gameStarted}
+        setGameStarted={setGameStarted}
       />
     </>
   );
