@@ -1,35 +1,65 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState, useEffect } from "react";
+import "./App.css";
+import getAnimeDataById from "./getAnimeDataById";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [cardAmount, setCardAmount] = useState(10);
+  const [animeId, setAnimeId] = useState(21);
+  const [animeTitle, setAnimeTitle] = useState(null);
+
+  useEffect(() => {
+    fetchAnimeTitle();
+  }, []);
+
+  async function fetchAnimeTitle() {
+    try {
+      const data = await getAnimeDataById(animeId);
+      setAnimeTitle(data ? data.title : "Not Found");
+    } catch (error) {
+      setAnimeTitle("Not Found");
+    }
+  }
+
+  function startGame() {}
 
   return (
     <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Anime Memory Game</h1>
+      <label htmlFor="card-amount">Card Amount</label>
+      <input
+        id="card-amount"
+        name="card-amount"
+        type="range"
+        min="6"
+        max="30"
+        value={cardAmount}
+        onChange={(e) => setCardAmount(Number(e.target.value))}
+      />
+      <p>Number of cards: {cardAmount}</p>
+      <br />
+      <label htmlFor="anime-id">MAL Anime ID: </label>
+      <input
+        type="number"
+        name="anime-id"
+        id="anime-id"
+        value={animeId}
+        onChange={(e) => {
+          const value = e.target.value;
+          setAnimeId(value === "" || isNaN(Number(value)) ? 21 : Number(value));
+        }}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            fetchAnimeTitle();
+          }
+        }}
+      />
+      <button onClick={fetchAnimeTitle}>Fetch Title</button>
+
+      <p>Anime Title: {animeTitle}</p>
+      <br />
+      <button onClick={startGame}>Start Game</button>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
