@@ -25,6 +25,7 @@ export default function PreGame({
   }
 
   function startGame() {
+    fetchAnimeTitle();
     setGameStarted(true);
   }
 

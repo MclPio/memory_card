@@ -1,4 +1,4 @@
-export default async function getCharacterPictures(id) {
+export default async function getCharacters(id) {
   const url = `https://api.jikan.moe/v4/anime/${id}/characters`;
 
   try {

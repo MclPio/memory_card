@@ -22,12 +22,14 @@ function App() {
         gameStarted={gameStarted}
         setGameStarted={setGameStarted}
       />
-      <Game
-        cardAmount={cardAmount}
-        animeId={animeId}
-        gameStarted={gameStarted}
-        setGameStarted={setGameStarted}
-      />
+      {gameStarted && (
+        <Game
+          cardAmount={cardAmount}
+          animeId={animeId}
+          gameStarted={gameStarted}
+          animeTitle={animeTitle}
+        />
+      )}
     </>
   );
 }
