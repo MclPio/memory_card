@@ -40,3 +40,34 @@
 .read-the-docs {
   color: #888;
 }
+
+.table {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr)
+}
+
+.table__card-button {
+  background-color: rgb(83, 44, 7);
+  margin: 8px;
+  padding: 8px;
+  border: 3px solid white;
+  color: white;
+  font-size: large;
+  font-weight: bold;
+}
+
+.table__card-button:hover {
+  border: 3px solid salmon;
+  background-color: rgb(165, 88, 16);
+}
+
+.table__card-button:focus {
+  border: 3px solid salmon;
+  background-color: rgb(165, 88, 16);
+}
+
+.table__card-button:active {
+  border: 3px solid rgb(245, 42, 20);
+  background-color: rgb(218, 153, 93);
+}
+
