@@ -26,7 +26,6 @@ export default function Game({ cardAmount, animeId, gameStarted, animeTitle }) {
   }, [animeId, cardAmount, gameStarted]);
 
   function handleClick(id) {
-    console.log(id)
     if (clickedCards.includes(id)) {
       setScore(0);
       setClickedCards([]);

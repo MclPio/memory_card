@@ -5,7 +5,7 @@ export default function Card({
 
   return (
     <button className="table__card-button" onClick={() => handleClick(card.id)}>
-      <img src={card.png} alt={card.name} />
+      <img className="table__card-img" src={card.png} alt={card.name}/>
       <p>{card.name}</p>
     </button>
   );
