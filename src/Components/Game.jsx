@@ -7,6 +7,7 @@ export default function Game({ cardAmount, animeId, gameStarted, animeTitle }) {
   const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
+  const [clickedCards, setClickedCards] = useState([]);
 
   useEffect(() => {
     async function fetchCards() {
@@ -24,11 +25,28 @@ export default function Game({ cardAmount, animeId, gameStarted, animeTitle }) {
     }
   }, [animeId, cardAmount, gameStarted]);
 
+  function handleClick(id) {
+    console.log(id)
+    if (clickedCards.includes(id)) {
+      setScore(0);
+      setClickedCards([]);
+      if (score > highScore) {
+        setHighScore(score);
+      }
+    } else {
+      setClickedCards([...clickedCards, id ]);
+      setScore(score + 1);
+    }
+    setCards(shuffle(cards));
+  }
+
   return (
     <>
       {gameStarted && (
         <div>
-          <h2>Score: {score} High Score: {highScore}</h2>
+          <h2>
+            Score: {score} High Score: {highScore}
+          </h2>
           <h2>{animeTitle}</h2>
           <div className="table">
             {cards.length > 0 ? (
@@ -36,13 +54,7 @@ export default function Game({ cardAmount, animeId, gameStarted, animeTitle }) {
                 <Card
                   key={card.id}
                   card={card}
-                  score={score}
-                  setScore={setScore}
-                  highScore={highScore}
-                  setHighScore={setHighScore}
-                  shuffle={shuffle}
-                  cards={cards}
-                  setCards={setCards}
+                  handleClick={handleClick}
                 />
               ))
             ) : (
