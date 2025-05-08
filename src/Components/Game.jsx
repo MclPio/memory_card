@@ -3,7 +3,7 @@ import getCards from "../utils/getCards";
 import Card from "./Card";
 import shuffle from "../utils/shuffle";
 
-export default function Game({ cardAmount, animeId, gameStarted, animeTitle }) {
+export default function Game({ cardAmount, animeId, gameStarted, animeTitle, mainMenu }) {
   const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
@@ -47,6 +47,7 @@ export default function Game({ cardAmount, animeId, gameStarted, animeTitle }) {
             Score: {score} High Score: {highScore}
           </h2>
           <h2>{animeTitle}</h2>
+          <button onClick={mainMenu}>Exit</button>
           <div className="table">
             {cards.length > 0 ? (
               cards.map((card) => (

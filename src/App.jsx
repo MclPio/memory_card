@@ -9,6 +9,10 @@ function App() {
   const [animeTitle, setAnimeTitle] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
 
+  function mainMenu() {
+    setGameStarted(false)
+  }
+
   return (
     <>
       <h1>Anime Memory Game</h1>
@@ -28,6 +32,7 @@ function App() {
           animeId={animeId}
           gameStarted={gameStarted}
           animeTitle={animeTitle}
+          mainMenu={mainMenu}
         />
       )}
     </>
