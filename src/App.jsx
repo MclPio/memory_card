@@ -15,7 +15,7 @@ function App() {
 
   return (
     <>
-      <h1>Anime Memory Game</h1>
+      {!gameStarted && <h1 className="app__title">Anime Memory Card Game</h1>}
       <PreGame
         cardAmount={cardAmount}
         setCardAmount={setCardAmount}

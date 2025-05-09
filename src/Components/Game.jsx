@@ -2,8 +2,15 @@ import { useEffect, useState } from "react";
 import getCards from "../utils/getCards";
 import Card from "./Card";
 import shuffle from "../utils/shuffle";
+import Score from "./Score";
 
-export default function Game({ cardAmount, animeId, gameStarted, animeTitle, mainMenu }) {
+export default function Game({
+  cardAmount,
+  animeId,
+  gameStarted,
+  animeTitle,
+  mainMenu,
+}) {
   const [cards, setCards] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
@@ -33,7 +40,7 @@ export default function Game({ cardAmount, animeId, gameStarted, animeTitle, mai
         setHighScore(score);
       }
     } else {
-      setClickedCards([...clickedCards, id ]);
+      setClickedCards([...clickedCards, id]);
       setScore(score + 1);
     }
     setCards(shuffle(cards));
@@ -42,23 +49,19 @@ export default function Game({ cardAmount, animeId, gameStarted, animeTitle, mai
   return (
     <>
       {gameStarted && (
-        <div>
-          <h2>
-            Score: {score} High Score: {highScore}
-          </h2>
-          <h2>{animeTitle}</h2>
-          <button onClick={mainMenu}>Exit</button>
+        <div className="game">
+          <Score score={score} highScore={highScore} />
+          <button className="game__exit-button" onClick={mainMenu}>
+            Exit
+          </button>
+          <h2 className="game__title">{animeTitle}</h2>
           <div className="table">
             {cards.length > 0 ? (
               cards.map((card) => (
-                <Card
-                  key={card.id}
-                  card={card}
-                  handleClick={handleClick}
-                />
+                <Card key={card.id} card={card} handleClick={handleClick} />
               ))
             ) : (
-              <p>Loading cards...</p>
+              <p className="game___loading">Loading cards...</p>
             )}
           </div>
         </div>
