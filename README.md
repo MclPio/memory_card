@@ -44,3 +44,7 @@ graph TD;
     D-->H[getCards.js];
     H-->I[getCharacters.js];
 ```
+
+## Blog
+
+Checkout my [blog post](https://www.michaelpious.com/posts/bulding-a-react-memory-game/)
