@@ -41,8 +41,8 @@ export default function PreGame({
               id="card-amount"
               name="card-amount"
               type="range"
-              min="6"
-              max="30"
+              min="5"
+              max="55"
               value={cardAmount}
               onChange={(e) => setCardAmount(Number(e.target.value))}
               className="pregame__range"

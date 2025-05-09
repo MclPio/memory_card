@@ -4,7 +4,7 @@ import PreGame from "./Components/PreGame";
 import Game from "./Components/Game";
 
 function App() {
-  const [cardAmount, setCardAmount] = useState(10);
+  const [cardAmount, setCardAmount] = useState(11);
   const [animeId, setAnimeId] = useState(21);
   const [animeTitle, setAnimeTitle] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
