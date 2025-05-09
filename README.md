@@ -42,6 +42,7 @@ graph TD;
     D-->F[Card.jsx];
     D-->G[shuffle.js];
     D-->H[getCards.js];
+    D-->K[Score.jsx]
     H-->I[getCharacters.js];
 ```
 
